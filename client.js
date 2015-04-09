@@ -5,6 +5,7 @@ var metal = require('metal-name');
 
 
 var nickname =  metal();
+rl.setPrompt(nickname + ': ');
 socket.on('connect', function(){
 	socket.emit('client_connection', { nickname: nickname });
 });
@@ -21,6 +22,7 @@ rl.on('line', function (line){
 	socket.emit('send', { nickname: nickname, message : line });
 	rl.prompt(true);
 });
+
 
 function console_out(msg){
 	process.stdout.clearLine();
